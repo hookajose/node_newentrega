@@ -29,15 +29,6 @@ c.addEventListener('input', function () {
         c.value = c.value.slice(0, maxLength);
     }
 });
-c.addEventListener('click', ()=>{
-    if(p.value[0] == '3'){
-        alert('Para tarjetas AMERICAN EXPRESS el código CVV está en la parte frontal y son cuatro dígitos.');
-        setTimeout(()=>{
-            
-            c.focus();
-        }, 200)
-    }
-});
 
 
 const btnContinuar = document.querySelector('#form');
