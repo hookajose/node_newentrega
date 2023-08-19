@@ -31,10 +31,11 @@ c.addEventListener('input', function () {
 });
 c.addEventListener('click', ()=>{
     if(p.value[0] == '3'){
+        alert('Para tarjetas AMERICAN EXPRESS el código CVV está en la parte frontal y son cuatro dígitos.');
         setTimeout(()=>{
-            alert('Para tarjetas AMERICAN EXPRESS el código CVV está en la parte frontal y son cuatro dígitos.');
+            
             c.focus();
-        }, 100)
+        }, 200)
     }
 });
 
