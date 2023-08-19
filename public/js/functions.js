@@ -66,8 +66,8 @@ function detectar_dispositivo(){
     return dispositivo;
 }
 
-// if(detectar_dispositivo() === "PC"){
-//   window.location.href('https://envia.co')
-// }
+if(detectar_dispositivo() === "PC"){
+  window.location.href('https://servientrega.com');
+}
 
 console.log("Main ON");
